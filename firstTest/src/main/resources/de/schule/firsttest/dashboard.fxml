@@ -1,13 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="de.schule.firsttest.Dashboard_Controller">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
-</VBox>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.schule.firsttest.Dashboard_Controller">
+   <children>
+      <TableView fx:id="tblZahlung" layoutX="160.0" layoutY="26.0" prefHeight="374.0" prefWidth="440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.0">
+        <columns>
+          <TableColumn fx:id="clmnOperator" prefWidth="75.0" text="+/-" />
+          <TableColumn fx:id="clmnBetrag" prefWidth="75.0" text="Betrag" />
+            <TableColumn fx:id="clmnKategorie" prefWidth="75.0" text="Kategorie" />
+            <TableColumn fx:id="clmnGrund" prefWidth="75.0" text="Grund" />
+            <TableColumn fx:id="clmnDatum" prefWidth="75.0" text="Datum" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <ListView fx:id="projektListe" layoutY="26.0" onMouseClicked="#clickedItem" prefHeight="374.0" prefWidth="155.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.8421709430404007E-14" AnchorPane.rightAnchor="444.66666666666663" AnchorPane.topAnchor="26.0" />
+      <Label alignment="CENTER" layoutY="5.0" prefHeight="9.0" prefWidth="155.0" text="Projekte" textAlignment="CENTER" underline="true" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="445.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+    <Button fx:id="btnDetails" layoutX="528.0" layoutY="1.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="72.0" text="Details &gt;&gt;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+      <Label layoutX="160.0" layoutY="5.0" prefHeight="17.0" prefWidth="72.0" text="Budget Übrig" />
+      <Label fx:id="lblBudget" layoutX="241.0" layoutY="5.0" prefHeight="17.0" prefWidth="72.0" text="\$budget" />
+   </children>
+</AnchorPane>

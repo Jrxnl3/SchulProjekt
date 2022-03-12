@@ -5,5 +5,7 @@ module de.schule.firsttest {
     requires org.controlsfx.controls;
 
     opens de.schule.firsttest to javafx.fxml;
+    opens de.schule.firsttest.objs to javafx.fxml;
     exports de.schule.firsttest;
+    exports de.schule.firsttest.objs;
 }
