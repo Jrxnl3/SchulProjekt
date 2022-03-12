@@ -10,4 +10,8 @@ public class Kategorie {
         this.id = id;
         this.kategorieName = kategorieName;
     }
+
+    public String getKategorieName() {
+        return kategorieName;
+    }
 }

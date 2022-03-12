@@ -1,6 +1,7 @@
 package de.schule.firsttest;
 
 import de.schule.firsttest.objs.BetragsEnum;
+import de.schule.firsttest.objs.Kategorie;
 import de.schule.firsttest.objs.Zahlung;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class Dashboard_Controller {
 
@@ -54,11 +56,11 @@ public class Dashboard_Controller {
         clmnBetrag.setCellValueFactory(new PropertyValueFactory<>("betrag"));
         clmnDatum.setCellValueFactory(new PropertyValueFactory<>("datum"));
         clmnGrund.setCellValueFactory(new PropertyValueFactory<>("grund"));
-        clmnKategorie.setCellValueFactory(new PropertyValueFactory<>("kategorie"));
+        clmnKategorie.setCellValueFactory(new PropertyValueFactory<>("kategorieName"));
         clmnOperator.setCellValueFactory(new PropertyValueFactory<>("operator"));
 
         ObservableList<Zahlung> zahlungen = FXCollections.observableArrayList();
-        Zahlung ersteZahlung = new Zahlung(BetragsEnum.PLUS,100.00,null,"Warum net?",new Date(2004,02,23));
+        Zahlung ersteZahlung = new Zahlung(BetragsEnum.PLUS,100.00,new Kategorie(UUID.randomUUID(),"Sprit"),"Warum net?",new Date(2004,02,23));
         System.out.println(ersteZahlung);
         zahlungen.add(ersteZahlung);
 

@@ -9,6 +9,7 @@ public class Zahlung implements Serializable {
         BetragsEnum operator;
         double betrag;
         Kategorie kategorie;
+        String kategorieName;
         String grund;
         Date datum;
 
@@ -17,6 +18,7 @@ public class Zahlung implements Serializable {
         this.operator = operator;
         this.betrag = betrag;
         this.kategorie = kategorie;
+        this.kategorieName = kategorie.getKategorieName();
         this.grund = grund;
         this.datum = datum;
     }
@@ -26,6 +28,7 @@ public class Zahlung implements Serializable {
         this.operator = operator;
         this.betrag = betrag;
         this.kategorie = kategorie;
+        this.kategorieName = kategorie.getKategorieName();
         this.grund = grund;
         this.datum = datum;
     }
@@ -76,6 +79,14 @@ public class Zahlung implements Serializable {
 
     public void setDatum(Date datum) {
         this.datum = datum;
+    }
+
+    public String getKategorieName() {
+        return kategorieName;
+    }
+
+    public void setKategorieName(String kategorieName) {
+        this.kategorieName = kategorieName;
     }
 
     @Override
