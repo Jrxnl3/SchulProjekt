@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.UUID;
 
 public class Zahlung implements Serializable {
-        UUID id;
+        int id;
         BetragsEnum operator;
         double betrag;
         Kategorie kategorie;
@@ -13,8 +13,8 @@ public class Zahlung implements Serializable {
         String grund;
         Date datum;
 
-    public Zahlung(UUID id, BetragsEnum operator, double betrag, Kategorie kategorie, String grund, Date datum) {
-        this.id = id;
+    public Zahlung(int id, BetragsEnum operator, double betrag, Kategorie kategorie, String grund, Date datum) {
+        this.id = 0;
         this.operator = operator;
         this.betrag = betrag;
         this.kategorie = kategorie;
@@ -24,7 +24,7 @@ public class Zahlung implements Serializable {
     }
 
     public Zahlung(BetragsEnum operator, double betrag, Kategorie kategorie, String grund, Date datum) {
-        this.id = UUID.randomUUID();
+        this.id = 0;
         this.operator = operator;
         this.betrag = betrag;
         this.kategorie = kategorie;
@@ -33,11 +33,11 @@ public class Zahlung implements Serializable {
         this.datum = datum;
     }
 
-    public UUID getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(int id) {
         this.id = id;
     }
 
