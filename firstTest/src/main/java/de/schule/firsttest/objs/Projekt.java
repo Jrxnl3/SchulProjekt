@@ -5,26 +5,31 @@ import java.util.UUID;
 
 public class Projekt {
 
-    UUID id;
-    String name;
-    HashMap<Integer, Zahlung> geordneteZahlungen;
+    private UUID id;
+    private String name;
+    private HashMap<Integer, Zahlung> geordneteZahlungen;
+    private double budget;
 
-    public Projekt(String name) {
+    public Projekt(String name, double budget) {
         id = UUID.randomUUID();
         this.name = name;
         geordneteZahlungen = new HashMap<>();
+        this.budget = budget;
     }
 
     public HashMap<Integer, Zahlung> getGeordneteZahlungen() {
         return geordneteZahlungen;
     }
+
     public void eintragHinzufügen(int nummer,Zahlung z){
         z.setId(nummer);
         geordneteZahlungen.put(nummer,z);
     }
+
     public void eintragLöschen(int nummer){
         geordneteZahlungen.remove(nummer);
     }
+
     public Zahlung bekommeZahlung(int nummer){
         return geordneteZahlungen.get(nummer);
     }
@@ -35,5 +40,13 @@ public class Projekt {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public double getBudget() {
+        return budget;
+    }
+
+    public void setBudget(double budget) {
+        this.budget = budget;
     }
 }

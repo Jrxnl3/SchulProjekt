@@ -13,7 +13,6 @@
       <TableView fx:id="tblZahlung" layoutX="160.0" layoutY="26.0" prefHeight="374.0" prefWidth="440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.0">
         <columns>
             <TableColumn fx:id="clmnID" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="clmnOperator" prefWidth="75.0" text="+/-" />
           <TableColumn fx:id="clmnBetrag" prefWidth="75.0" text="Betrag" />
             <TableColumn fx:id="clmnKategorie" prefWidth="75.0" text="Kategorie" />
             <TableColumn fx:id="clmnGrund" prefWidth="75.0" text="Grund" />

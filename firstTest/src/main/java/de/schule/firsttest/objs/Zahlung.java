@@ -1,21 +1,18 @@
 package de.schule.firsttest.objs;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.UUID;
+import java.time.LocalDate;
 
 public class Zahlung implements Serializable {
-        int id;
-        BetragsEnum operator;
-        double betrag;
-        Kategorie kategorie;
-        String kategorieName;
-        String grund;
-        Date datum;
+        private int id;
+        private double betrag;
+        private Kategorie kategorie;
+        private String kategorieName;
+        private String grund;
+        private LocalDate datum;
 
-    public Zahlung(int id, BetragsEnum operator, double betrag, Kategorie kategorie, String grund, Date datum) {
+    public Zahlung(int id, double betrag, Kategorie kategorie, String grund, LocalDate datum) {
         this.id = 0;
-        this.operator = operator;
         this.betrag = betrag;
         this.kategorie = kategorie;
         this.kategorieName = kategorie.getKategorieName();
@@ -23,9 +20,8 @@ public class Zahlung implements Serializable {
         this.datum = datum;
     }
 
-    public Zahlung(BetragsEnum operator, double betrag, Kategorie kategorie, String grund, Date datum) {
+    public Zahlung(double betrag, Kategorie kategorie, String grund, LocalDate datum) {
         this.id = 0;
-        this.operator = operator;
         this.betrag = betrag;
         this.kategorie = kategorie;
         this.kategorieName = kategorie.getKategorieName();
@@ -39,14 +35,6 @@ public class Zahlung implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public BetragsEnum getOperator() {
-        return operator;
-    }
-
-    public void setOperator(BetragsEnum operator) {
-        this.operator = operator;
     }
 
     public double getBetrag() {
@@ -73,11 +61,11 @@ public class Zahlung implements Serializable {
         this.grund = grund;
     }
 
-    public Date getDatum() {
+    public LocalDate getDatum() {
         return datum;
     }
 
-    public void setDatum(Date datum) {
+    public void setDatum(LocalDate datum) {
         this.datum = datum;
     }
 
@@ -89,15 +77,4 @@ public class Zahlung implements Serializable {
         this.kategorieName = kategorieName;
     }
 
-    @Override
-    public String toString() {
-        return "Zahlung{" +
-                "id=" + id +
-                ", operator=" + operator +
-                ", betrag=" + betrag +
-                ", kategorie=" + kategorie +
-                ", grund='" + grund + '\'' +
-                ", datum=" + datum +
-                '}';
-    }
 }

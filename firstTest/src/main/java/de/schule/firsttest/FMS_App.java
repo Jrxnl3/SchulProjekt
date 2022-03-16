@@ -7,14 +7,24 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class FMS_Application extends Application {
+public class FMS_App extends Application {
+
+    private static Model model;
+
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(FMS_Application.class.getResource("dashboard.fxml"));
+        model = new Model();
+        model.testVariabeln();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(FMS_App.class.getResource("dashboard.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600,600);
         stage.setTitle("Finanz Management Software");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public static Model getModel() {
+        return model;
     }
 
     public static void main(String[] args) {

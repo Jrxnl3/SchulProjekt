@@ -1,13 +1,9 @@
 package de.schule.firsttest.objs;
 
-import java.util.UUID;
-
 public class Kategorie {
-    UUID id;
-    String kategorieName;
+    private String kategorieName;
 
-    public Kategorie(UUID id, String kategorieName) {
-        this.id = id;
+    public Kategorie(String kategorieName) {
         this.kategorieName = kategorieName;
     }
 
