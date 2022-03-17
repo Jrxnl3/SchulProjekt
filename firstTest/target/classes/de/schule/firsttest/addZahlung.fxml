@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="316.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.schule.firsttest.controllers.AddZahlung_Controller">
+   <children>
+      <Label layoutX="91.0" layoutY="14.0" text="Zahlung hinzufügen" textAlignment="CENTER" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="83.66666666666666">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="83.0" layoutY="67.0" text="Projekt" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="83.66666666666666" />
+      <ChoiceBox fx:id="chbProjekt" layoutX="83.0" layoutY="85.0" prefWidth="150.0" />
+      <Label layoutX="83.0" layoutY="123.0" text="Betrag" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="83.66666666666666" />
+      <TextField fx:id="txtBetrag" layoutX="83.0" layoutY="143.0" promptText="-300 / 300" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="83.66666666666666" />
+      <Label layoutX="83.0" layoutY="185.0" text="Kategorie" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="83.66666666666666" />
+      <TextField fx:id="txtKategorie" layoutX="83.0" layoutY="203.0" promptText="Passende Kategorie" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="83.66666666666666" />
+      <Label layoutX="83.0" layoutY="242.0" text="Grund" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="83.66666666666666" />
+      <TextField fx:id="txtGrund" layoutX="83.0" layoutY="260.0" promptText="Guter Grund" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="83.66666666666666" />
+      <Label layoutX="83.0" layoutY="294.0" text="Datum" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="83.66666666666666" />
+      <DatePicker fx:id="payDate" layoutX="83.0" layoutY="314.0" prefHeight="25.0" prefWidth="149.0" promptText="Aus/Einnahme Datum" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="83.66666666666666" />
+      <Button fx:id="btnAdd" layoutX="83.0" layoutY="360.0" mnemonicParsing="false" onAction="#addZahlung" text="Hinzufügen" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="83.66666666666666" />
+   </children>
+</AnchorPane>
