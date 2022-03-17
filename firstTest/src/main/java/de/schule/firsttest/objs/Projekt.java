@@ -7,7 +7,7 @@ public class Projekt {
 
     private UUID id;
     private String name;
-    private HashMap<Integer, Zahlung> geordneteZahlungen;
+    private HashMap<Integer, Zahlung> geordneteZahlungen; //TODO: Lieber LinkedList? Als HashMap wegen .size() mit Spacer
     private double budget;
 
     public Projekt(String name, double budget) {

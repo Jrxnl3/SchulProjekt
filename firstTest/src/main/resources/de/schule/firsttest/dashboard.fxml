@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="407.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.schule.firsttest.Dashboard_Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="407.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.schule.firsttest.controllers.Dashboard_Controller">
    <children>
       <TableView fx:id="tblZahlung" layoutX="160.0" layoutY="26.0" prefHeight="374.0" prefWidth="440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.0">
         <columns>
@@ -38,7 +38,7 @@
                   <Font size="11.0" />
                </font>
             </Button>
-            <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#addZahlung" text="Add" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#addZahlung" text="Add" textAlignment="CENTER" />
         </buttons>
       </ButtonBar>
    </children>

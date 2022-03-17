@@ -3,7 +3,13 @@ package de.schule.firsttest;
 import de.schule.firsttest.objs.Kategorie;
 import de.schule.firsttest.objs.Projekt;
 import de.schule.firsttest.objs.Zahlung;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -44,6 +50,8 @@ public class Model {
     public void saveProjekte(ArrayList<Projekt> projekte){
 
     }
+
+    //TODO Highest ID von Projekt rausfinden
 
     public ArrayList<Projekt> getProjekte() {
         return alleProjekte;
@@ -107,4 +115,23 @@ public class Model {
         return alert;
     }
 
+    public void addZahlungToProjekt(String projektName, Zahlung z){
+        Projekt p = findProjekt(projektName);
+        p.eintragHinzufügen(p.getGeordneteZahlungen().size(),z); //TODO: Fehler bei TestProjekt zwei wegen IDs? + 1 Spacer
+    }
+
+    public Stage createStageZahlung(){
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(FMS_App.class.getResource("addZahlung.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(fxmlLoader.load(), 300,400);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setTitle("Add Zahlung");
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        return stage;
+    }
 }

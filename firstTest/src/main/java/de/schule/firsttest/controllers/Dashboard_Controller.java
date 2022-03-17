@@ -1,5 +1,6 @@
-package de.schule.firsttest;
+package de.schule.firsttest.controllers;
 
+import de.schule.firsttest.FMS_App;
 import de.schule.firsttest.objs.Projekt;
 import de.schule.firsttest.objs.Zahlung;
 import javafx.event.ActionEvent;
@@ -7,7 +8,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -41,6 +44,12 @@ public class Dashboard_Controller {
 
     @FXML
     private ListView<String> projektListe = new ListView<>();
+
+    @FXML
+    void addZahlung(ActionEvent event) throws IOException {
+        Stage stage = FMS_App.getModel().createStageZahlung();
+        stage.show();
+    }
 
     @FXML
     void clickedItem(MouseEvent event) {

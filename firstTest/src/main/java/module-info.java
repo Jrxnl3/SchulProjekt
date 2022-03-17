@@ -8,4 +8,6 @@ module de.schule.firsttest {
     opens de.schule.firsttest.objs to javafx.fxml;
     exports de.schule.firsttest;
     exports de.schule.firsttest.objs;
+    exports de.schule.firsttest.controllers;
+    opens de.schule.firsttest.controllers to javafx.fxml;
 }
