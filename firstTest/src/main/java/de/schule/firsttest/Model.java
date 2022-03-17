@@ -1,6 +1,5 @@
 package de.schule.firsttest;
 
-import de.schule.firsttest.objs.BetragsEnum;
 import de.schule.firsttest.objs.Kategorie;
 import de.schule.firsttest.objs.Projekt;
 import de.schule.firsttest.objs.Zahlung;
