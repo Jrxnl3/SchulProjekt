@@ -14,7 +14,6 @@ public class FMS_App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         model = new Model();
-        model.testVariabeln();
 
         FXMLLoader fxmlLoader = new FXMLLoader(FMS_App.class.getResource("dashboard.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600,600);
@@ -29,5 +28,6 @@ public class FMS_App extends Application {
 
     public static void main(String[] args) {
         launch();
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> model.saveProject()));
     }
 }

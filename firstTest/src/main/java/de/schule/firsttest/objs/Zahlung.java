@@ -9,9 +9,9 @@ public class Zahlung implements Serializable {
         private Kategorie kategorie;
         private String kategorieName;
         private String grund;
-        private LocalDate datum;
+        private String datum;
 
-    public Zahlung(int id, double betrag, Kategorie kategorie, String grund, LocalDate datum) {
+    public Zahlung(int id, double betrag, Kategorie kategorie, String grund, String datum) {
         this.id = 0;
         this.betrag = betrag;
         this.kategorie = kategorie;
@@ -20,7 +20,7 @@ public class Zahlung implements Serializable {
         this.datum = datum;
     }
 
-    public Zahlung(double betrag, Kategorie kategorie, String grund, LocalDate datum) {
+    public Zahlung(double betrag, Kategorie kategorie, String grund, String datum) {
         this.id = 0;
         this.betrag = betrag;
         this.kategorie = kategorie;
@@ -61,11 +61,11 @@ public class Zahlung implements Serializable {
         this.grund = grund;
     }
 
-    public LocalDate getDatum() {
+    public String getDatum() {
         return datum;
     }
 
-    public void setDatum(LocalDate datum) {
+    public void setDatum(String datum) {
         this.datum = datum;
     }
 

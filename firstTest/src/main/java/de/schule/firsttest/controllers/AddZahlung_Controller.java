@@ -41,7 +41,7 @@ public class AddZahlung_Controller {
             LocalDate datum = payDate.getValue();
             String kategorieName = txtKategorie.getText();
             Kategorie kategorie = new Kategorie(kategorieName);
-            Zahlung z = new Zahlung(betrag,kategorie,grund,datum);
+            Zahlung z = new Zahlung(betrag,kategorie,grund,String.valueOf(datum));
 
             FMS_App.getModel().addZahlungToProjekt(projektName,z); // Richtige ID verwenden
             Stage stage = (Stage) chbProjekt.getScene().getWindow();

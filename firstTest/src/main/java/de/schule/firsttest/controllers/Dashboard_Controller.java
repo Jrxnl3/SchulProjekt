@@ -46,9 +46,14 @@ public class Dashboard_Controller {
     private ListView<String> projektListe = new ListView<>();
 
     @FXML
-    void addZahlung(ActionEvent event) throws IOException {
+    void addZahlung(ActionEvent event) {
         Stage stage = FMS_App.getModel().createStageZahlung();
         stage.show();
+    }
+
+    @FXML
+    void deleteItem(ActionEvent event) {
+        tblZahlung.getItems().remove(tblZahlung.getSelectionModel().getSelectedItem());
     }
 
     @FXML
@@ -67,7 +72,7 @@ public class Dashboard_Controller {
         tblZahlung.getItems().addAll(zahlungen);
 
 
-        //TODO Budget in Extra Window öffnen
+        //TODO: Budget in Extra Window öffnen
         lblBudget.setText(String.valueOf(FMS_App.getModel().calculateBudget(clickedProjekt)));
     }
 
@@ -79,7 +84,7 @@ public class Dashboard_Controller {
             Alert alert = FMS_App.getModel().paymentDetails(z);
             alert.showAndWait();
         }catch (Exception e){
-            Alert error = FMS_App.getModel().errorAlert("Table View Content","Du musst vorher eine Zahlung auswählen ");
+            Alert error = FMS_App.getModel().errorAlert("Tabellen Error","Du musst vorher eine Zahlung auswählen ");
             error.showAndWait();
         }
     }

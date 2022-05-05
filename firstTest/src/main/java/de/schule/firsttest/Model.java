@@ -1,5 +1,7 @@
 package de.schule.firsttest;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import de.schule.firsttest.objs.Kategorie;
 import de.schule.firsttest.objs.Projekt;
 import de.schule.firsttest.objs.Zahlung;
@@ -9,46 +11,67 @@ import javafx.scene.control.Alert;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.*;
 
 public class Model {
     private ArrayList<Projekt> alleProjekte;
 
+    final String excDir = System.getProperty("user.dir");
+    final String cfgDir = excDir + "/configs";
+
+    final String cfgFile = cfgDir + "/cfg.json";
+    final String projectFile = cfgDir + "/projects.json";
+
     public Model() {
         alleProjekte = new ArrayList<>();
+
+
+        File cfgFolder = new File(cfgDir);
+        if (!cfgFolder.exists())
+            cfgFolder.mkdir();
+
+        createFile(cfgFile);
+        createFile(projectFile);
+
+        loadProject();
     }
 
-    //TODO: Entferne Test Variabeln
-    public void testVariabeln(){
-        //Erstelle ersteZahlung
-        Zahlung ersteZahlung = new Zahlung(100.00,new Kategorie("Sprit"),"Warum net?",LocalDate.of(2022,1,5));
-        Zahlung zweiteZahlung = new Zahlung(-300,new Kategorie("Essen"),"Hmmm geil",LocalDate.of(2020,12,1));
-        Zahlung dritteZahlung = new Zahlung(-5,new Kategorie("Kaugumi"),"Worth it", LocalDate.of(2004,2,23));
-
-
-        //Erstelle Projekt + eintrag Hinzufügen
-        Projekt p1 = new Projekt("Test Projekt",500);
-        p1.eintragHinzufügen(0,ersteZahlung);
-
-        Projekt p2 = new Projekt("Zweit Projekt",100);
-        p2.eintragHinzufügen(0,ersteZahlung);
-        p2.eintragHinzufügen(1,zweiteZahlung);
-        p2.eintragHinzufügen(3,dritteZahlung);
-
-        alleProjekte.add(p1);
-        alleProjekte.add(p2);
+    public void saveProject() {
+        try {
+            FileWriter file = new FileWriter(projectFile);
+            file.write(new Gson().toJson(alleProjekte));
+            file.close();
+        } catch (IOException error) {
+            error.printStackTrace();
+        }
     }
 
-    //TODO: Projekte laden @Jakub
-    public ArrayList<Projekt> loadProjekte(String dateiName) {
-        return alleProjekte;
+    public void loadProject(){
+        Gson gson = new Gson();
+        try {
+            Reader reader = Files.newBufferedReader(Path.of(projectFile));
+            alleProjekte = gson.fromJson(reader,new TypeToken<List<Projekt>>() {}.getType());
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
-
-    //TODO: Projekte speichern @Jakub
-    public void saveProjekte(ArrayList<Projekt> projekte){
-
+    public void createFile(String path) {
+        File file = new File(path);
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     //TODO Highest ID von Projekt rausfinden
