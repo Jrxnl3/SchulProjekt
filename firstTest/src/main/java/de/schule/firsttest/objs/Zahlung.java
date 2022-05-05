@@ -1,7 +1,6 @@
 package de.schule.firsttest.objs;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 public class Zahlung implements Serializable {
         private int id;

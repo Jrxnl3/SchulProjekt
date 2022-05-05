@@ -35,6 +35,7 @@ public class AddZahlung_Controller {
     @FXML
     void addZahlung(ActionEvent event) {
         try{
+
             String projektName = chbProjekt.getValue();
             double betrag = Double.parseDouble(txtBetrag.getText());
             String grund = txtGrund.getText();
@@ -44,6 +45,8 @@ public class AddZahlung_Controller {
             Zahlung z = new Zahlung(betrag,kategorie,grund,String.valueOf(datum));
 
             FMS_App.getModel().addZahlungToProjekt(projektName,z); // Richtige ID verwenden
+            FMS_App.getModel().updateListeners();
+
             Stage stage = (Stage) chbProjekt.getScene().getWindow();
             stage.close();
 

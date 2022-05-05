@@ -2,22 +2,22 @@ package de.schule.firsttest;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import de.schule.firsttest.objs.Kategorie;
+import de.schule.firsttest.listeners.TableViewUpdate;
 import de.schule.firsttest.objs.Projekt;
 import de.schule.firsttest.objs.Zahlung;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.time.LocalDate;
 import java.util.*;
 
 public class Model {
@@ -29,9 +29,11 @@ public class Model {
     final String cfgFile = cfgDir + "/cfg.json";
     final String projectFile = cfgDir + "/projects.json";
 
+    private ObservableList<TableViewUpdate> tableListeners;
+
     public Model() {
         alleProjekte = new ArrayList<>();
-
+        tableListeners = FXCollections.observableArrayList();
 
         File cfgFolder = new File(cfgDir);
         if (!cfgFolder.exists())
@@ -143,6 +145,11 @@ public class Model {
         p.eintragHinzufügen(p.getGeordneteZahlungen().size(),z); //TODO: Fehler bei TestProjekt zwei wegen IDs? + 1 Spacer
     }
 
+    public void removeZahlungFromProjekt(String projektName, Zahlung z){
+        Projekt p = findProjekt(projektName);
+        p.eintragLöschen(z.getId()); //TODO: Fehler bei TestProjekt zwei wegen IDs? + 1 Spacer
+    }
+
     public Stage createStageZahlung(){
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(FMS_App.class.getResource("addZahlung.fxml"));
@@ -156,5 +163,16 @@ public class Model {
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         return stage;
+    }
+
+    //TODO: In Bearbeitung!
+    public void addListener(TableViewUpdate e){
+        tableListeners.add(e);
+    }
+
+    public void updateListeners(){
+        for (TableViewUpdate t: tableListeners) {
+            t.updateTable();
+        }
     }
 }

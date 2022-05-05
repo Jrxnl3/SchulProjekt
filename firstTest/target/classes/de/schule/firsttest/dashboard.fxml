@@ -33,12 +33,13 @@
       <Label fx:id="lblBudget" layoutX="241.0" layoutY="5.0" prefHeight="17.0" prefWidth="72.0" text="\$budget" />
       <ButtonBar layoutX="400.0" layoutY="1.0" prefHeight="25.0" prefWidth="125.0" AnchorPane.rightAnchor="0.0">
         <buttons>
-          <Button fx:id="btnDetails" mnemonicParsing="false" onAction="#openDetails" prefHeight="0.0" prefWidth="72.0" text="Details &gt;&gt;">
+          <Button fx:id="btnDetails" mnemonicParsing="false" onAction="#openDetails" prefHeight="0.0" prefWidth="72.0" text="Details">
                <font>
                   <Font size="11.0" />
                </font>
             </Button>
             <Button mnemonicParsing="false" onAction="#addZahlung" text="Add" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#deleteItem" text="Delete" />
         </buttons>
       </ButtonBar>
    </children>

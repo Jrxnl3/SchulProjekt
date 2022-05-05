@@ -1,5 +1,8 @@
 package de.schule.firsttest;
 
+import de.schule.firsttest.controllers.AddZahlung_Controller;
+import de.schule.firsttest.controllers.Dashboard_Controller;
+import de.schule.firsttest.listeners.TableViewUpdate;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,6 +17,8 @@ public class FMS_App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         model = new Model();
+
+        model.addListener(new Dashboard_Controller());
 
         FXMLLoader fxmlLoader = new FXMLLoader(FMS_App.class.getResource("dashboard.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600,600);

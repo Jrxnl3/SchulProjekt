@@ -1,6 +1,7 @@
 package de.schule.firsttest.controllers;
 
 import de.schule.firsttest.FMS_App;
+import de.schule.firsttest.listeners.TableViewUpdate;
 import de.schule.firsttest.objs.Projekt;
 import de.schule.firsttest.objs.Zahlung;
 import javafx.event.ActionEvent;
@@ -9,12 +10,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 
-public class Dashboard_Controller {
+public class Dashboard_Controller implements TableViewUpdate {
 
     @FXML
     private Button btnDetails;
@@ -53,7 +52,13 @@ public class Dashboard_Controller {
 
     @FXML
     void deleteItem(ActionEvent event) {
-        tblZahlung.getItems().remove(tblZahlung.getSelectionModel().getSelectedItem());
+        String projektName = projektListe.getSelectionModel().getSelectedItem();
+
+        Zahlung z = tblZahlung.getSelectionModel().getSelectedItem();
+        FMS_App.getModel().removeZahlungFromProjekt(projektName,z);
+
+        FMS_App.getModel().updateListeners();
+
     }
 
     @FXML
@@ -75,7 +80,6 @@ public class Dashboard_Controller {
         //TODO: Budget in Extra Window öffnen
         lblBudget.setText(String.valueOf(FMS_App.getModel().calculateBudget(clickedProjekt)));
     }
-
 
     @FXML
     void openDetails(ActionEvent event) {
@@ -102,5 +106,8 @@ public class Dashboard_Controller {
         }
     }
 
-
+    @Override
+    public void updateTable() {
+        tblZahlung.refresh();
+    }
 }
